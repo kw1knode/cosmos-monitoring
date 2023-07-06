@@ -158,3 +158,18 @@ services:
       - "traefik.http.routers.tenderduty.entrypoints=websecure"
       - "traefik.http.routers.tenderduty.tls.certresolver=myresolver"
       - "traefik.http.routers.tenderduty.rule=Host(`$TENDERDUTY_HOST`)"
+
+######################################################################################
+#####################                GOVSTAT                   #######################
+######################################################################################
+  govstat:
+    image: kw1k/govstat:latest
+    container_name: govstat
+    volumes:
+      - ./govstat/chains.yml:/govstat/chains.yml
+    environment:
+      - DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/your-webhook-id/your-webhook-token
+      - SLEEP_TIME=43200 #IN SECONDS
+    restart: unless-stopped
+    networks:
+      - monitor-net

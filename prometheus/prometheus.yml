@@ -29,13 +29,13 @@ scrape_configs:
     honor_labels: true
     static_configs:
       - targets: ['pushgateway:9091']
-
- - job_name: 'grafana'
+  
+  - job_name: 'grafana'
     scrape_interval: 5s
     static_configs:
       - targets: ['grafana:3000']
 
- - job_name: 'tenderduty'
+  - job_name: 'tenderduty'
     scrape_interval: 5s
     static_configs:
       - targets: ['tenderduty:28686']
